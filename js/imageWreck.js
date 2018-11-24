@@ -1,8 +1,8 @@
-var imgTextArea = $('#imgText');
 var imgContainer = $('#imgContainer');
 var originalImgContainer = $('#originalImgContainer');
 var speedInput = $('#speed');
 var charsToChangeInput = $('#charsToChange');
+var base64ImageString;
 
 /**
  * Class to control image wrecking
@@ -29,16 +29,12 @@ ImageWreck.prototype.setOptions = function () {
 ImageWreck.prototype.doIt = function () {
     const self = this;
 
-    var imgTextAreaValue = imgTextArea.val();
-
-    var newVal = imgTextArea.val();
+    var newVal = base64ImageString;
 
     if (!newVal) {
         alert('Upload an image first');
         return false;
     }
-
-    originalImgContainer.attr('src', imgTextAreaValue);
 
     this.interval = setInterval(function () {
 
@@ -65,9 +61,7 @@ ImageWreck.prototype.stopIt = function () {
  */
 ImageWreck.prototype.resetIt = function () {
     clearInterval(this.interval);
-    var imgTextAreaValue = imgTextArea.val();
-    originalImgContainer.attr('src', imgTextAreaValue);
-    imgContainer.attr('src', imgTextAreaValue);
+    imgContainer.attr('src', base64ImageString);
 }
 
 /**
@@ -79,9 +73,9 @@ function readURL(input) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $('#fileInput').attr('src', e.target.result);
-            $('#imgText').val(e.target.result);
-            originalImgContainer.attr('src', e.target.result);
             imgContainer.attr('src',  e.target.result);
+            originalImgContainer.attr('src', e.target.result);
+            base64ImageString = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
     }
