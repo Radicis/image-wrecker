@@ -1,10 +1,13 @@
 #imgText {
-    height: 210px;
+    height: 200px;
 }
 
-#imgContainer, #originalImgContainer {
-    border: 1px solid #ccc;
+#imgContainer {
     max-width: 100%;
+}
+
+#originalImgContainer {
+    max-height: 200px;
 }
 
 

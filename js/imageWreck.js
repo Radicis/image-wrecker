@@ -6,10 +6,9 @@ var charsToChangeInput = $('#charsToChange');
 
 /**
  * Class to control image wrecking
- * @param options
  * @constructor
  */
-function ImageWreck(options) {
+function ImageWreck() {
     this.setOptions();
 }
 
@@ -32,7 +31,12 @@ ImageWreck.prototype.doIt = function () {
 
     var imgTextAreaValue = imgTextArea.val();
 
-    let newVal = imgTextArea.val();
+    var newVal = imgTextArea.val();
+
+    if (!newVal) {
+        alert('Upload an image first');
+        return false;
+    }
 
     originalImgContainer.attr('src', imgTextAreaValue);
 
@@ -55,6 +59,33 @@ ImageWreck.prototype.doIt = function () {
 ImageWreck.prototype.stopIt = function () {
     clearInterval(this.interval);
 };
+
+/**
+ * Clear the interval and reset the image to its original state
+ */
+ImageWreck.prototype.resetIt = function () {
+    clearInterval(this.interval);
+    var imgTextAreaValue = imgTextArea.val();
+    originalImgContainer.attr('src', imgTextAreaValue);
+    imgContainer.attr('src', imgTextAreaValue);
+}
+
+/**
+ * Browse for a file and store the bage64 string
+ * @param input 
+ */
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#fileInput').attr('src', e.target.result);
+            $('#imgText').val(e.target.result);
+            originalImgContainer.attr('src', e.target.result);
+            imgContainer.attr('src',  e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 
 
