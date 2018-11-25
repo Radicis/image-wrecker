@@ -12,6 +12,7 @@
     text-align: center;
 }
 
+
 .warning {
     font-size: 0.8rem;
     color: #D11D05;
@@ -21,27 +22,7 @@ img {
     max-width: 100%;
 }
 
-#originalImgContainer {
-    border: 1px solid #ccc;
-    max-height: 150px;
-}
-
-.controls {
-    position: absolute;
-    left: 26px;
-    top: 115px;
-}
-
-.controls .fas {
-    color: #343a40;
-}
-
-.about-controls {
-    position: absolute;
-    left: 30px;
-}
-
-.about-controls .fas {
+button .fas {
     color: #343a40;
 }
 

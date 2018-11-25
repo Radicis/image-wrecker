@@ -1,5 +1,4 @@
 var imgContainer = $('#imgContainer');
-var originalImgContainer = $('#originalImgContainer');
 var speedInput = $('#speed');
 var charsToChangeInput = $('#charsToChange');
 var base64ImageString;
@@ -70,7 +69,6 @@ ImageWreck.prototype.resetIt = function () {
 ImageWreck.prototype.clearIt = function () {
     clearInterval(this.interval);
     imgContainer.attr('src', '');
-    originalImgContainer.attr('src', '');
     base64ImageString = null;
 }
 
@@ -84,8 +82,7 @@ function readURL(input) {
         reader.onload = function (e) {
             $('#fileInput').attr('src', e.target.result);
             imgContainer.attr('src',  e.target.result);
-            originalImgContainer.attr('src', e.target.result);
-
+            base64ImageString = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
     }
