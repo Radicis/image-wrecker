@@ -65,6 +65,16 @@ ImageWreck.prototype.resetIt = function () {
 }
 
 /**
+ * Clear the interval and reset the image to its original state
+ */
+ImageWreck.prototype.clearIt = function () {
+    clearInterval(this.interval);
+    imgContainer.attr('src', '');
+    originalImgContainer.attr('src', '');
+    base64ImageString = null;
+}
+
+/**
  * Browse for a file and store the bage64 string
  * @param input 
  */
@@ -75,7 +85,7 @@ function readURL(input) {
             $('#fileInput').attr('src', e.target.result);
             imgContainer.attr('src',  e.target.result);
             originalImgContainer.attr('src', e.target.result);
-            base64ImageString = e.target.result;
+
         };
         reader.readAsDataURL(input.files[0]);
     }

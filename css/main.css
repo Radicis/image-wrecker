@@ -1,15 +1,64 @@
-#imgText {
-    height: 200px;
+
+.navbar-brand .fas {
+    margin-left: 20px;
+    margin-right: 15px;
 }
 
-#imgContainer {
+.navbar-brand .sub-heading {
+    font-size: 1rem;
+}
+
+.about-text {
+    text-align: center;
+}
+
+.warning {
+    font-size: 0.8rem;
+    color: #D11D05;
+}
+
+img {
     max-width: 100%;
 }
 
 #originalImgContainer {
     border: 1px solid #ccc;
-    width: auto;
     max-height: 150px;
+}
+
+.controls {
+    position: absolute;
+    left: 26px;
+    top: 115px;
+}
+
+.controls .fas {
+    color: #343a40;
+}
+
+.about-controls {
+    position: absolute;
+    left: 30px;
+}
+
+.about-controls .fas {
+    color: #343a40;
+}
+
+.github {
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    border: 0;
+    max-width: 130px;
+}
+
+.buttons button {
+    margin-bottom:5px;
+}
+
+.btn.btn-block {
+    margin-top: 0;
 }
 
 
